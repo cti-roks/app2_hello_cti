@@ -21,7 +21,7 @@ spec:
               containerPort: 8081
               protocol: TCP
       imagePullSecrets:
-        - name: for-ibm-cr
+        - name: all-icr-io
 ---
 kind: Service
 apiVersion: v1
