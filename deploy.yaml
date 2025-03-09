@@ -15,6 +15,7 @@ spec:
       containers:
         - name: app2
           image: jp.icr.io/cti-roks-training/cicd-app2:latest
+          imagePullPolicy: Always
           ports:
             - name: http
               containerPort: 8081
