@@ -1,0 +1,23 @@
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  name: build-and-deploy-app2
+  namespace: app1-cicd-demo
+spec:
+  params:
+    - name: IMAGE_NAME
+      value: 'jp.icr.io/cti-roks-training/cicd-app2:latest'
+    - name: GIT_REPO
+      value: 'https://github.com/cti-roks/app2_hello_cti.git'
+    - name: GIT_REVISION
+      value: main
+  pipelineRef:
+    name: build-and-deploy-app2
+  taskRunTemplate:
+    serviceAccountName: pipeline
+  timeouts:
+    pipeline: 1h0m0s
+  workspaces:
+    - name: workspace
+      persistentVolumeClaim:
+        claimName: sample-pvc-1
